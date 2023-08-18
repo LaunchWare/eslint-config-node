@@ -1,5 +1,6 @@
 {
   "name": "@launchware/eslint-config-node",
+  "scope": "@launchware",
   "version": "0.0.1",
   "description": "ESLint configuration for LaunchWare node projects",
   "main": "index.js",
