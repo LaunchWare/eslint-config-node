@@ -3,7 +3,7 @@
   "scope": "@launchware",
   "version": "0.0.3",
   "description": "ESLint configuration for LaunchWare node projects",
-  "main": "index.js",
+  "main": "index.cjs",
   "repository": "https://github.com/LaunchWare/eslint-config-node",
   "author": "Dan Pickett",
   "license": "MIT",
