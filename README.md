@@ -5,7 +5,7 @@ This is the default eslint configuration for LaunchWare's Node projects.
 ## Installation
 
 ```bash
-yarn add -D @launchware/eslint-config-node
+pnpm add -D @launchware/eslint-config-node
 ```
 
 ## Usage
