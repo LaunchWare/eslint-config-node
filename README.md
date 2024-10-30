@@ -10,10 +10,23 @@ pnpm add -D @launchware/eslint-config-node
 
 ## Usage
 
-You need to add the following to your `.eslintrc` (or equivalent) file:
+You need to add the following to your `eslint.config.js` (or equivalent) file:
 
 ```json
-{
-  "extends": "@launchware/eslint-config-node"
-}
+const launchEslint = require("@launchware/eslint-config-node")
+
+module.exports = [
+  // ... other configurations,
+  ...launchEslint.default.configs.recommended,
+  {
+    settings: {
+      "files": ["**/*.{ts}"],
+      "import/resolver": { typescript: { project: "./tsconfig.lib.json" } },
+    },
+  },
+  {
+    files: ["test/**/*.{ts}", "**/*.test.{ts}"],
+    languageOptions: { parserOptions: { project: "./tsconfig.test.json" } },
+  },
+]
 ```

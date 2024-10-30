@@ -1,13 +1,13 @@
 {
   "name": "@launchware/eslint-config-node",
   "scope": "@launchware",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "ESLint configuration for LaunchWare node projects",
-  "main": "./dist/cjs/eslint-config-node.js",
+  "main": "./cjs/eslint-config-node.js",
   "repository": "https://github.com/LaunchWare/eslint-config-node",
   "author": "Dan Pickett",
   "license": "MIT",
-  "module": "./dist/esm/eslint-config-node.js",
+  "module": "./esm/eslint-config-node.js",
   "scripts": {
     "build": "rollup -c"
   },
