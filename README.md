@@ -12,7 +12,7 @@ pnpm add -D @launchware/eslint-config-node
 
 You need to add the following to your `eslint.config.js` (or equivalent) file:
 
-```json
+```javascript
 const launchEslint = require("@launchware/eslint-config-node")
 
 module.exports = [
