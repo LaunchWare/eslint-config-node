@@ -1,8 +1,13 @@
-import tsEslint from "typescript-eslint"
-import tsParser from "@typescript-eslint/parser"
-import eslint from "@eslint/js"
-import eslintPluginImportX from "eslint-plugin-import-x"
 import path from "node:path"
+
+import eslint from "@eslint/js"
+import tsParser from "@typescript-eslint/parser"
+import tsEslintUtils from "@typescript-eslint/utils"
+import eslintPluginImportX from "eslint-plugin-import-x"
+import tsEslint, { configs as tsEslintConfigs } from "typescript-eslint"
+
+// eslint-disable-next-line no-restricted-imports
+import packageJson from "../package.json"
 
 const typeScriptFileGlobs = ["**/*.ts", "**/*.tsx"]
 
@@ -12,13 +17,21 @@ type ConfigurationOutput = {
     version: string
   }
   configs: {
-    recommended: ReturnType<typeof tsEslint.config>
+    recommended: tsEslintUtils.TSESLint.FlatConfig.ConfigArray
   }
 }
-export const getConfiguration = (tsconfigRootDir: string): ConfigurationOutput => {
+export const getConfiguration = ({
+  tsconfigRootDir,
+  project,
+  allowDefaultProject,
+}: {
+  tsconfigRootDir: string
+  project: string | boolean | string[] | null | undefined
+  allowDefaultProject: string[] | undefined
+}): ConfigurationOutput => {
   const flatConfig = tsEslint.config(
     eslint.configs.recommended,
-    ...tsEslint.configs.strictTypeChecked,
+    ...tsEslintConfigs.strictTypeChecked,
     eslintPluginImportX.flatConfigs.recommended,
     eslintPluginImportX.flatConfigs.typescript,
     {
@@ -28,7 +41,10 @@ export const getConfiguration = (tsconfigRootDir: string): ConfigurationOutput =
         parser: tsParser,
         parserOptions: {
           tsconfigRootDir: path.resolve(tsconfigRootDir),
-          projectService: true,
+          project,
+          projectService: {
+            allowDefaultProject,
+          },
           ecmaVersion: "latest",
         },
         ecmaVersion: "latest",
@@ -86,14 +102,14 @@ export const getConfiguration = (tsconfigRootDir: string): ConfigurationOutput =
     },
     {
       files: ["**/*.js"],
-      extends: [tsEslint.configs.disableTypeChecked],
+      extends: [tsEslintConfigs.disableTypeChecked],
     },
   )
 
   const config = {
     meta: {
       name: "@launchware/eslint-config-node",
-      version: "0.1.0",
+      version: packageJson.version,
     },
     configs: {
       recommended: flatConfig,

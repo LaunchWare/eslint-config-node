@@ -2,6 +2,8 @@
 
 This is the default eslint configuration for LaunchWare's Node projects.
 
+It works exclusively with TypeScript projects.
+
 ## Installation
 
 ```bash
@@ -14,20 +16,12 @@ You need to add the following to your `eslint.config.js` (or equivalent) file:
 
 ```javascript
 const { getConfiguration as getLaunchwareConfiguration } = require("@launchware/eslint-config-node")
-const launchEslint = getLaunchwareConfiguration(__dirname) //you need to point to the directory where tsconfig.json resides
+
+// you need to point to the directory where tsconfig.json resides when you call `getLaunchwareConfiguration`
+const launchEslint = getLaunchwareConfiguration({tsconfigRootDir: __dirname})
 
 module.exports = [
   // ... other configurations,
   ...launchEslint.configs.recommended,
-  {
-    settings: {
-      "files": ["**/*.{ts}"],
-      "import/resolver": { typescript: { project: "./tsconfig.lib.json" } },
-    },
-  },
-  {
-    files: ["test/**/*.{ts}", "**/*.test.{ts}"],
-    languageOptions: { parserOptions: { project: "./tsconfig.test.json" } },
-  },
 ]
 ```
