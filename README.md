@@ -13,11 +13,12 @@ pnpm add -D @launchware/eslint-config-node
 You need to add the following to your `eslint.config.js` (or equivalent) file:
 
 ```javascript
-const launchEslint = require("@launchware/eslint-config-node")
+const { getConfiguration as getLaunchwareConfiguration } = require("@launchware/eslint-config-node")
+const launchEslint = getLaunchwareConfiguration(__dirname) //you need to point to the directory where tsconfig.json resides
 
 module.exports = [
   // ... other configurations,
-  ...launchEslint.default.configs.recommended,
+  ...launchEslint.configs.recommended,
   {
     settings: {
       "files": ["**/*.{ts}"],

@@ -17,7 +17,7 @@ export default [
   {
     input: "./src/index.ts",
     plugins: [
-      typescript(),
+      typescript({ declaration: false }),
       copy({
         targets: [{ src: "./package.json", dest: "dist" }],
       }),

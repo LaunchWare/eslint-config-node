@@ -2,12 +2,13 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compileOnSave": false,
   "compilerOptions": {
-    "rootDir": ".",
-
+    "outDir": "./dist",
+    "rootDir": "./src",
     "baseUrl": ".",
     "allowJs": true,
     "sourceMap": true,
-    "declaration": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
     "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
@@ -21,7 +22,7 @@
     "skipDefaultLibCheck": true,
     "strict": true
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "dist", "rollup.config.mjs"],
   "ts-node": {
     "esm": true
   }
