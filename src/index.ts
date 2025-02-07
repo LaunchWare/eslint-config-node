@@ -64,12 +64,6 @@ export const getConfiguration = ({
       rules: {
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/no-unused-vars": ["error"],
-        "no-restricted-imports": [
-          "error",
-          {
-            patterns: ["**/../*"],
-          },
-        ],
         "import-x/no-default-export": "error",
         "import-x/order": [
           "error",
