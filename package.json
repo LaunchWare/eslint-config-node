@@ -17,11 +17,11 @@
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.0.0 || ^22.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.11.0",
-    "@typescript-eslint/parser": "^8.11.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
     "eslint": "^9.10.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-import-resolver-typescript": "^4.3.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-import-x": "^4.4.0",
     "jiti": "^2.4.0",
@@ -34,15 +34,17 @@
   "peerDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
-    "eslint-plugin-import": "^2.30.0",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.30.0",
     "eslint-plugin-import-x": "^4.4.0",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.11.0"
   },
   "dependencies": {
+    "@eslint/js": "^9.23.0",
     "@typescript-eslint/utils": "^8.13.0"
-  }
+  },
+  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b"
 }

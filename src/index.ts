@@ -4,7 +4,8 @@ import eslint from "@eslint/js"
 import tsParser from "@typescript-eslint/parser"
 import tsEslintUtils from "@typescript-eslint/utils"
 import eslintPluginImportX from "eslint-plugin-import-x"
-import tsEslint, { configs as tsEslintConfigs } from "typescript-eslint"
+import tsEslint from "typescript-eslint"
+import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript"
 
 // eslint-disable-next-line no-restricted-imports
 import packageJson from "../package.json"
@@ -31,7 +32,6 @@ export const getConfiguration = ({
 }): ConfigurationOutput => {
   const flatConfig = tsEslint.config(
     eslint.configs.recommended,
-    ...tsEslintConfigs.strictTypeChecked,
     eslintPluginImportX.flatConfigs.recommended,
     eslintPluginImportX.flatConfigs.typescript,
     {
@@ -61,6 +61,14 @@ export const getConfiguration = ({
     },
     {
       files: typeScriptFileGlobs,
+      settings: {
+        "import-x/resolver-next": [
+          createTypeScriptImportResolver({
+            alwaysTryTypes: true,
+            project: project === null || typeof project === "boolean" ? undefined : project,
+          }),
+        ],
+      },
       rules: {
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/no-unused-vars": ["error"],
@@ -96,7 +104,7 @@ export const getConfiguration = ({
     },
     {
       files: ["**/*.js"],
-      extends: [tsEslintConfigs.disableTypeChecked],
+      extends: [tsEslint.configs.disableTypeChecked],
     },
   )
 
