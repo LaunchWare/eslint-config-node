@@ -1,10 +1,13 @@
 import path from "node:path"
 
 import eslint from "@eslint/js"
-import tsParser from "@typescript-eslint/parser"
 import tsEslintUtils from "@typescript-eslint/utils"
 import eslintPluginImportX from "eslint-plugin-import-x"
-import tsEslint from "typescript-eslint"
+import {
+  configs as tsEslintConfigs,
+  config as tsEslintConfig,
+  parser as tsParser,
+} from "typescript-eslint"
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript"
 
 // eslint-disable-next-line no-restricted-imports
@@ -30,7 +33,7 @@ export const getConfiguration = ({
   project: string | boolean | string[] | null | undefined
   allowDefaultProject: string[] | undefined
 }): ConfigurationOutput => {
-  const flatConfig = tsEslint.config(
+  const flatConfig = tsEslintConfig(
     eslint.configs.recommended,
     eslintPluginImportX.flatConfigs.recommended,
     eslintPluginImportX.flatConfigs.typescript,
@@ -104,7 +107,7 @@ export const getConfiguration = ({
     },
     {
       files: ["**/*.js"],
-      extends: [tsEslint.configs.disableTypeChecked],
+      extends: [tsEslintConfigs.disableTypeChecked],
     },
   )
 
