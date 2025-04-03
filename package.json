@@ -1,7 +1,7 @@
 {
   "name": "@launchware/eslint-config-node",
   "scope": "@launchware",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "ESLint configuration for LaunchWare node projects",
   "main": "./cjs/eslint-config-node.js",
   "repository": "https://github.com/LaunchWare/eslint-config-node",
