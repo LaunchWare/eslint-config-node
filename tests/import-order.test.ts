@@ -53,7 +53,7 @@ describe('ESLint Import Order Validation', () => {
 
   beforeAll(async () => {
     eslint = await getEslintInstance();
-  }, 10000); // Increase timeout for beforeAll if ESLint init is slow
+  }); // Removed specific timeout, will use global testTimeout
 
   const fixturesDir = path.join(__dirname, 'fixtures', 'import-order');
 
