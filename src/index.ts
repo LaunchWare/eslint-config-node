@@ -40,6 +40,7 @@ export const getConfiguration = ({
     {
       name: "LaunchWare Rules",
       extends: [],
+      files: typeScriptFileGlobs,
       languageOptions: {
         parser: tsParser,
         parserOptions: {
@@ -106,9 +107,9 @@ export const getConfiguration = ({
       },
     },
     {
-      files: ["**/*.js"],
+      files: ["**/*.js", "**/*.mjs"],
       extends: [tsEslintConfigs.disableTypeChecked],
-    },
+    }
   )
 
   const config = {
