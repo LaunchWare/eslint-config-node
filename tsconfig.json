@@ -23,7 +23,8 @@
     "skipDefaultLibCheck": true,
     "strict": true
   },
-  "exclude": ["node_modules", "dist", "./eslint.config.mjs", "./rollup.config.mjs"],
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "./eslint.config.mjs", "./rollup.config.mjs", "jest.config.js", "tests/**/*"],
   "ts-node": {
     "esm": true
   }
